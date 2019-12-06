@@ -21,6 +21,16 @@ services:
       - 8090:8090
     depends_on:
       - config-server
+  order:
+    expose:
+      - 8070
+    build:
+      context: order
+      dockerfile: order.dockerfile
+    ports:
+      - 8070:8070
+    depends_on:
+      - config-server
     networks:
       - network1
 networks:
