@@ -19,6 +19,8 @@ services:
       dockerfile: book.dockerfile
     ports:
       - 8090:8090
+    depends_on:
+      - config-server
     networks:
       - network1
 networks:
