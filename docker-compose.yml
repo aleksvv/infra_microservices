@@ -21,6 +21,7 @@ services:
       - 8090:8090
     depends_on:
       - config-server
+      - eureka-server
     networks:
       - network1
   order:
@@ -31,6 +32,19 @@ services:
       dockerfile: order.dockerfile
     ports:
       - 8070:8070
+    depends_on:
+      - config-server
+      - eureka-server
+    networks:
+      - network1
+  eureka-server:
+    expose:
+      - 9010
+    build:
+      context: eureka-server
+      dockerfile: eureka.dockerfile
+    ports:
+      - 9010:9010
     depends_on:
       - config-server
     networks:
