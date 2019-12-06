@@ -11,6 +11,16 @@ services:
       - 9000:9000
     networks:
        - network1
+  book:
+    expose:
+      - 8090
+    build:
+      context: book
+      dockerfile: book.dockerfile
+    ports:
+      - 8090:8090
+    networks:
+      - network1
 networks:
   network1:
     driver: bridge
