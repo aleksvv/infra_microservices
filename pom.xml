@@ -56,6 +56,10 @@
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -101,6 +105,10 @@
 		<module>consul</module>
 		<module>monolith</module>
 		<module>vault</module>
+		<module>order</module>
+		<module>book</module>
+		<module>delivery</module>
+		<module>statistics</module>
 	</modules>
 
 </project>
