@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.7'
 
 services:
   config-server:
@@ -6,7 +6,9 @@ services:
         - 9000
     build:
       context: config-server
-      dockerfile: server.dockerfile 
+      dockerfile: server.dockerfile
+    ports:
+      - 9000:9000
     networks:
        - network1
 networks:
