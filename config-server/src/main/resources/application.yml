@@ -8,3 +8,9 @@
 spring:
   profiles:
     active: native
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+        register: true
+      connect-string: ${ZK_URI:localhost:2181}

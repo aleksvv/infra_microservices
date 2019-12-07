@@ -3,4 +3,9 @@ server:
 spring:
   application:
     name: order
-
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+        register: true
+      connect-string: ${ZK_URI:localhost:2181}
