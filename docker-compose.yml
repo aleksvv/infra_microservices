@@ -59,6 +59,20 @@ services:
       - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
     networks:
       - network1
+  gateway:
+    expose:
+      - 8010
+    build:
+      context: gateway
+      dockerfile: gateway.dockerfile
+    ports:
+      - 8010:8010
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
+    networks:
+      - network1
   eureka-server:
     expose:
       - 9010
