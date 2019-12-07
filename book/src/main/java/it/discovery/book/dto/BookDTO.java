@@ -22,9 +22,9 @@ public class BookDTO {
 
     private Integer authorId;
 
-    private int hitCount;
+    private String hitCount;
 
-    public BookDTO(Book book, int hitCount) {
+    public BookDTO(Book book, String hitCount) {
         this.hitCount = hitCount;
         id = book.getId();
         name = book.getName();

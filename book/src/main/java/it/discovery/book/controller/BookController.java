@@ -1,5 +1,6 @@
 package it.discovery.book.controller;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import it.discovery.book.dto.BookDTO;
 import it.discovery.book.feign.HitClient;
 import it.discovery.book.repository.BookRepository;
@@ -37,6 +38,17 @@ public class BookController {
                 .stream()
                 .map(book -> new BookDTO(book, hitClient.getHitCount(book.getId())))
                 .collect(Collectors.toList());
+    }
+
+    @HystrixCommand(fallbackMethod = "getDefaultHitCount",
+            commandKey = "hitCount")
+    public String getHitCount(int bookId) {
+        return hitClient.getHitCount(bookId);
+    }
+
+    public String getDefaultHitCount(int bookId,
+                                     Throwable t) {
+        return "N/A";
     }
 
     @GetMapping("{id}")

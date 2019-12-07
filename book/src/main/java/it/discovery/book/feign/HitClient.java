@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @FeignClient("statistics")
 public interface HitClient {
     @GetMapping("hits/{id}")
-    int getHitCount(@PathVariable("id") int id);
+    String getHitCount(@PathVariable("id") int id);
 
     @PostMapping("hits/{bookId}")
     void saveHit(@PathVariable("bookId") int bookId);
