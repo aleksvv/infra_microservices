@@ -9,6 +9,10 @@ services:
       dockerfile: server.dockerfile
     ports:
       - 9000:9000
+    depends_on:
+      - eureka-server
+    environment:
+      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
     networks:
        - network1
   book:
@@ -50,8 +54,6 @@ services:
       dockerfile: eureka.dockerfile
     ports:
       - 9010:9010
-    depends_on:
-      - config-server
     environment:
       - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
     networks:
