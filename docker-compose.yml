@@ -82,6 +82,12 @@ services:
       - 8080:8080
     networks:
       - network1
+  zipkin:
+    image: openzipkin/zipkin
+    ports:
+      - 9411:9411
+    networks:
+      - network1
 networks:
   network1:
     driver: bridge
