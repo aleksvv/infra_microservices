@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.stream.Collectors;
 
 @RestController
@@ -40,9 +41,10 @@ public class BookController {
 
     @GetMapping("{id}")
     public BookDTO findOne(@PathVariable int id) {
+        //TODO handle 404
         BookDTO bookDTO = new BookDTO(bookRepository.findBookById(id),
                 getHitCount(id));
-        saveHit(id);
+        CompletableFuture.runAsync(() -> saveHit(id));
         return bookDTO;
     }
 

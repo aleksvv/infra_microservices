@@ -20,7 +20,7 @@ public class BookDTO {
 
     private double price;
 
-    private int authorId;
+    private Integer authorId;
 
     private int hitCount;
 
@@ -31,6 +31,6 @@ public class BookDTO {
         year = book.getYear();
         pages = book.getPages();
         price = book.getPrice();
-        authorId = ofNullable(book.getAuthor()).map(Person::getId).orElse(0);
+        authorId = ofNullable(book.getAuthor()).map(Person::getId).orElse(null);
     }
 }
