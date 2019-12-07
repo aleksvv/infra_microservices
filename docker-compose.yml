@@ -27,7 +27,6 @@ services:
       - config-server
       - eureka-server
     environment:
-      - CONFIG_SERVER_URI=http://config-server:9000
       - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
     networks:
       - network1
