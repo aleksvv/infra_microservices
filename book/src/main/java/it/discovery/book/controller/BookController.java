@@ -47,11 +47,11 @@ public class BookController {
     }
 
     private int getHitCount(int id) {
-        return restTemplate.getForObject("http://statistics/hit/" + id, Integer.class);
+        return restTemplate.getForObject("http://statistics/hits/" + id, Integer.class);
     }
 
     private void saveHit(int bookId) {
-        restTemplate.postForObject("http://statistics/hit/" + bookId,
+        restTemplate.postForObject("http://statistics/hits/" + bookId,
                 null, Void.class);
     }
 }

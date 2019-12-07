@@ -31,6 +31,6 @@ public class BookDTO {
         year = book.getYear();
         pages = book.getPages();
         price = book.getPrice();
-        authorId = ofNullable(book.getAuthor()).map(Person::getId).orElse(null);
+        authorId = ofNullable(book.getAuthor()).map(Person::getId).orElse(0);
     }
 }
