@@ -22,6 +22,9 @@ services:
     depends_on:
       - config-server
       - eureka-server
+    environment:
+      - CONFIG_SERVER_URI=http://config-server:9000
+      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
     networks:
       - network1
   order:
@@ -35,6 +38,8 @@ services:
     depends_on:
       - config-server
       - eureka-server
+    environment:
+      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
     networks:
       - network1
   eureka-server:
@@ -47,6 +52,8 @@ services:
       - 9010:9010
     depends_on:
       - config-server
+    environment:
+      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
     networks:
       - network1
 networks:
