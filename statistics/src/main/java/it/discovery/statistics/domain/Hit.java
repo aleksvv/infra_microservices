@@ -13,6 +13,8 @@ public class Hit {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
+    private int objectId;
+
     private String userName;
 
     private String ip;

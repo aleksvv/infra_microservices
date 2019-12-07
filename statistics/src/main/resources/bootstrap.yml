@@ -1,0 +1,9 @@
+server:
+  port: 8050
+spring:
+  application:
+    name: statitics
+eureka:
+  client:
+    serviceUrl:
+      defaultZone=${EUREKA_SERVER_URI:http://localhost:9010/eureka}:
