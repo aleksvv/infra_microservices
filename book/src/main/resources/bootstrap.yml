@@ -4,6 +4,11 @@ spring:
   application:
     name: library-client
   cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+        register: true
+      connect-string: ${ZK_URI:localhost:2181}
     config:
       fail-fast: true
       retry:

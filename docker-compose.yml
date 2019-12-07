@@ -10,9 +10,9 @@ services:
     ports:
       - 9000:9000
     depends_on:
-      - eureka-server
+      - zookeeper
     environment:
-      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
+      - ZK_URI=zookeeper:2181
     networks:
        - network1
   book:
@@ -25,9 +25,9 @@ services:
       - 8090:8090
     depends_on:
       - config-server
-      - eureka-server
+      - zookeeper
     environment:
-      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
+      - ZK_URI=zookeeper:2181
     networks:
       - network1
   order:
@@ -40,9 +40,9 @@ services:
       - 8070:8070
     depends_on:
       - config-server
-      - eureka-server
+      - zookeeper
     environment:
-      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
+      - ZK_URI=zookeeper:2181
     networks:
       - network1
   statistics:
@@ -54,9 +54,9 @@ services:
     ports:
       - 8050:8050
     depends_on:
-      - eureka-server
+      - zookeeper
     environment:
-      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
+      - ZK_URI=zookeeper:2181
     networks:
       - network1
   gateway:
@@ -68,21 +68,18 @@ services:
     ports:
       - 8010:8010
     depends_on:
-      - eureka-server
+      - zookeeper
     environment:
-      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
+      - ZK_URI=zookeeper:2181
     networks:
       - network1
-  eureka-server:
-    expose:
-      - 9010
-    build:
-      context: eureka-server
-      dockerfile: eureka.dockerfile
+  zookeeper:
+    image: zookeeper
     ports:
-      - 9010:9010
-    environment:
-      - EUREKA_SERVER_URI=http://eureka-server:9010/eureka
+      - 2181:2181
+      - 2888:2888
+      - 3888:3888
+      - 8080:8080
     networks:
       - network1
 networks:
